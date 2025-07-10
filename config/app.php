@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Tashkent',
 
     /*
     |--------------------------------------------------------------------------
@@ -122,5 +122,8 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
+
+    'debug_notify_url' => env('DEBUG_NOTIFY_URL', 'localhost'),
+    'debug_callback_url' => env('DEBUG_CALLBACK_URL', 'localhost'),
 
 ];
