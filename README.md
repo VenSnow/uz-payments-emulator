@@ -260,7 +260,6 @@ Simply include `debug_scenario` in the request body.
 - Telegram bot for notifications
 - Postman collection
 - Docker support
-- Enhanced Uzum API features (e.g., additional error codes)
 
 ---
 
