@@ -9,6 +9,9 @@ return [
     'TransactionStatus.success'         => 'Успешно',
     'TransactionStatus.failed'          => 'Ошибка',
     'TransactionStatus.cancelled'       => 'Отменено',
+    'TransactionStatus.created'         => 'Создано',
+    'TransactionStatus.confirmed'       => 'Подтверждено',
+    'TransactionStatus.reversed'        => 'Возвращено',
 
     'ScenarioType.success'              => 'Успешная оплата',
     'ScenarioType.insufficient_funds'   => 'Недостаточно средств',

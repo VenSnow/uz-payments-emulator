@@ -9,6 +9,9 @@ return [
     'TransactionStatus.success'         => 'Muvaffaqiyatli',
     'TransactionStatus.failed'          => 'Xato',
     'TransactionStatus.cancelled'       => 'Bekor qilindi',
+    'TransactionStatus.created'         => 'Yaratilgan',
+    'TransactionStatus.confirmed'       => 'Tasdiqlangan',
+    'TransactionStatus.reversed'        => 'Qaytarildi',
 
     'ScenarioType.success'              => 'Muvaffaqiyatli to\'lov',
     'ScenarioType.insufficient_funds'   => 'Mablag\'yetarli emas',
