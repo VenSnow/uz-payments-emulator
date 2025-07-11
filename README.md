@@ -1,6 +1,6 @@
 # 💳 Uz Payments Emulator
 
-`version 0.1 BETA`
+`version 0.2 BETA`
 
 **Emulator for payment providers in Uzbekistan (PayMe, Click, Uzum)**  
 
@@ -112,6 +112,72 @@ Content-Type: application/json
 ```
 
 ``!!!Amount is in tyiyns (1 sum = 100 tyiyn). Example: 500000 = 5000.00 UZS!!!``
+
+### Debug Scenarios
+The `uz-payments-emulator` supports simulation of predefined responses for testing purposes using the `debug_scenario` parameter
+
+**This only works when `APP_ENV=local`. In production, debug scenarios are ignored**
+
+Supported Scenarios:
+Make `GET` request to `{{BASE_URL}}api/enums/scenario-type`
+
+**!Use only `value` for `debug_scneario`!**
+
+```json
+{
+    "success": true,
+    "data": [
+        {
+            // Simulates a successful transaction
+            "value": "success",
+            "label": "OK"
+        },
+        {
+            // Simulates a failed transaction due to insufficient funds
+            "value": "insufficient_funds",
+            "label": "Insufficient funds"
+        },
+        {
+            // Simulates a timeout error
+            "value": "timeout",
+            "label": "Gateway Timeout"
+        },
+        {
+            // Simulates a signature verification failure
+            "value": "signature_error",
+            "label": "Invalid signature"
+        }
+    ]
+}
+```
+
+### Usage Example
+
+Simply include `debug_scenario` in the `params` field of your JSON-RPC request
+
+**CreateTransaction Example**
+```json
+{
+  "method": "CreateTransaction",
+  "params": {
+    "id": "tx_001",
+    "time": 1720630000000,
+    "amount": 500000,
+    "account": {
+      "phone": "998901234567"
+    },
+    "debug_scenario": "success"
+  }
+}
+```
+### Notes
+* You can use `debug_scenario` with **any supported method**, including:
+    * `CreateTransaction`
+    * `PerformTransaction` 
+    * `CancelTransaction`
+    * `CheckTransaction`
+* When `debug_scenario` is present, no real transaction logic is applied - the response is mocked
+* This feature is useful for testing client integration with various edge cases.
 
 ---
 
