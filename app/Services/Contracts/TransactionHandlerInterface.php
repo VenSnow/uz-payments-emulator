@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Payme\Handlers;
+namespace App\Services\Contracts;
 
 interface TransactionHandlerInterface
 {

@@ -13,4 +13,7 @@ enum TransactionStatus: string
     case SUCCESS = 'success';
     case FAILED = 'failed';
     case CANCELLED = 'cancelled';
+    case CREATED = 'created';
+    case CONFIRMED = 'confirmed';
+    case REVERSED = 'reversed';
 }

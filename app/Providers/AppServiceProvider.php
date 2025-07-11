@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
-use App\Repositories\Payme\TransactionRepository;
-use App\Services\Payme\Handlers\CreateTransactionHandler;
+use App\Repositories\TransactionRepository;
+use App\Services\Payme\Handlers\CreateTransactionHandler as PaymeCreateTransactionHandler;
+use App\Services\Uzum\Handlers\CreateTransactionHandler as UzumCreateTransactionHandler;
 use App\Services\Payme\PaymeDebugScenarioHandler;
+use App\Services\Uzum\UzumDebugScenarioHandler;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,8 +18,14 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(PaymeDebugScenarioHandler::class, function ($app) {
             return new PaymeDebugScenarioHandler(
-                new CreateTransactionHandler($app->make(TransactionRepository::class))
+                new PaymeCreateTransactionHandler($app->make(TransactionRepository::class))
             );
+        });
+
+        $this->app->when(UzumDebugScenarioHandler::class)
+            ->needs(UzumCreateTransactionHandler::class)
+            ->give(function ($app) {
+                return new UzumCreateTransactionHandler($app->make(TransactionRepository::class));
         });
     }
 

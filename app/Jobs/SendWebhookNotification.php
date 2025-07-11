@@ -77,9 +77,13 @@ class SendWebhookNotification implements ShouldQueue
         $prefix = $this->debug ? '[DEBUG]: ' : '';
         return match ($this->transaction->status) {
             TransactionStatus::SUCCESS => $prefix . 'Transaction completed successfully',
-            TransactionStatus::FAILED  => $prefix . 'Transaction failed',
+            TransactionStatus::FAILED => $prefix . 'Transaction failed',
             TransactionStatus::PENDING => $prefix . 'Transaction is pending',
-            default                    => $prefix . 'Unknown status',
+            TransactionStatus::CANCELLED => $prefix . 'Transaction cancelled',
+            TransactionStatus::CREATED => $prefix . 'Transaction created',
+            TransactionStatus::CONFIRMED => $prefix . 'Transaction confirmed',
+            TransactionStatus::REVERSED => $prefix . 'Transaction reversed',
+            default => $prefix . 'Unknown status',
         };
     }
 }

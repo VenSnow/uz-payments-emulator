@@ -3,9 +3,10 @@
 namespace App\Services\Payme\Handlers;
 
 use App\Enums\TransactionStatus;
-use App\Helpers\PaymeStatusMapper;
-use App\Repositories\Payme\TransactionRepository;
 use App\Exceptions\PaymeException;
+use App\Helpers\PaymeStatusMapper;
+use App\Repositories\TransactionRepository;
+use App\Services\Contracts\TransactionHandlerInterface;
 use Illuminate\Support\Facades\Validator;
 
 class CheckTransactionHandler implements TransactionHandlerInterface

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories\Payme;
+namespace App\Repositories;
 
 use App\Models\Transaction;
 

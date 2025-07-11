@@ -3,12 +3,12 @@
 namespace App\Services\Payme;
 
 use App\Exceptions\PaymeException;
-use App\Repositories\Payme\TransactionRepository;
+use App\Repositories\TransactionRepository;
+use App\Services\Contracts\TransactionHandlerInterface;
 use App\Services\Payme\Handlers\CancelTransactionHandler;
 use App\Services\Payme\Handlers\CheckTransactionHandler;
 use App\Services\Payme\Handlers\CreateTransactionHandler;
 use App\Services\Payme\Handlers\PerformTransactionHandler;
-use App\Services\Payme\Handlers\TransactionHandlerInterface;
 
 class PaymeRpcService
 {
